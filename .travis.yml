@@ -9,17 +9,17 @@ script:
  - docker run fate7/react-test -e CI=true npm run test -- --coverage
 
 after_success:
- - docker build -t fateh/multi-client ./client
- - docker build -t fateh/multi-server ./server
- - docker build -t fateh/multi-worker ./worker
- - docker build -t fateh/multi-nginx ./nginx
+ - docker build -t fate7/multi-client ./client
+ - docker build -t fate7/multi-server ./server
+ - docker build -t fate7/multi-worker ./worker
+ - docker build -t fate7/multi-nginx ./nginx
  #login to docker
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
  #docker push
- - docker push fateh/multi-client
- - docker push fateh/multi-server
- - docker push fateh/multi-worker
- - docker push fateh/multi-nginx
+ - docker push fate7/multi-client
+ - docker push fate7/multi-server
+ - docker push fate7/multi-worker
+ - docker push fate7/multi-nginx
 
 
 
