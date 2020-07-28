@@ -1,0 +1,40 @@
+{
+ "AWSEBDockerrunVersion": 2,
+ "containerDefinitions": [
+  {
+   "name": "client",
+   "image": "fate7/multi-client",
+   "hostname": "client",
+   "essential": false
+  },
+  {
+   "name": "server",
+   "image": "fate7/multi-server",
+   "hostname": "api",
+   "essential": false
+  },
+  {
+   "name": "worker",
+   "image": "fate7/multi-worker",
+   "hostname": "worker",
+   "essential": false
+  },
+  {
+   "name": "nginx",
+   "image": "fate7/multi-nginx",
+   "hostname": "nginx",
+   "essential": true,
+   "portMappings": [
+    {
+     "hostPort": 80,
+     "containerPort":80
+    }
+   ],
+   "links": ["client", "server"]
+  }
+ ]
+}
+
+
+
+

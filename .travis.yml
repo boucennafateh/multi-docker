@@ -21,6 +21,18 @@ after_success:
  - docker push fate7/multi-worker
  - docker push fate7/multi-nginx
 
+deploy:
+ provider: elasticbeanstalk
+ access_key_id: $aws_access_id
+ secret_access_key: $aws_secret_access
+ region: "us-east-1"
+ app: "multi-docker"
+ env: "MultiDocker-env"
+ bucket_name: "elasticbeanstalk-us-east-1-302962537892"
+ bucket_path: "multi-docker"
+ on:
+    branch: master
+
 
 
   
